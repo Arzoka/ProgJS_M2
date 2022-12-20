@@ -1,73 +1,45 @@
+import {Tree_Render} from "./boomrenderer.js";
+import {Tree_V_Render} from "./boomrenderer.js";
+import { House_Render } from "./huisrenderer.js";
+
 class App
 {
     runApplication()
     {
-        console.log("hello world!");
+        document.body.style.overflow = "hidden";
         let canvas = document.getElementById('canvasId');
+        let renders = 30;
         let g = canvas.getContext("2d");
-        let x = 200;
-        let y = 200;
-        this.DrawHouse(x,y,g);
-    }
 
-    DrawHouse(x,y,g)
-       {
-
-        // Roof
-        g.beginPath()
-        g.fillStyle = "#555555";
-        g.moveTo(x,y);
-        g.lineTo(x - 10,y + 20);
-        g.lineTo(x + 30, y + 30);
-        g.lineTo(x + 40,y + 10);
-        g.closePath();
-        g.stroke();
-        g.fill()
+        canvas.height = screen.height;
+        canvas.width = screen.width;
         
-        // Side Roof
-        g.beginPath()
-        g.fillStyle = "#666666";
-        g.moveTo(x + 40, y + 10);
-        g.lineTo(x + 30, y + 30);
-        g.lineTo(x + 50,y + 20);
-        g.closePath();
-        g.stroke();
-        g.fill()
 
-        // Wall
-        g.beginPath()
-        g.fillStyle = "#DDDDDD";
-        g.moveTo(x - 10, y + 20);
-        g.lineTo(x + -10, y + 40); 
-        g.lineTo(x + 30, y + 50);
-        g.lineTo(x + 30, y + 30);
-        g.closePath();
-        g.stroke();
-        g.fill()
+        for (let i = 0; i < renders; i++) {
+            let x = Math.random() * screen.width;
+            let y = Math.random() * screen.height;
+            let n = Math.floor(Math.random() * 3 + 1);
+            if (n == 1) {
+                House_Render.Draw(x,y,g);
+            }
+            else if(n == 2) {
+                Tree_Render.Draw(x,y,g);
+            }
+            else if(n == 3) {
+                Tree_V_Render.Draw(x,y,g);
+            }
 
-        // Window
-        g.beginPath()
-        g.fillStyle = "#7777FF";
-        g.moveTo(x - 5, y + 24);
-        g.lineTo(x - 5, y + 32);
-        g.lineTo(x + 5, y + 34.5);
-        g.lineTo(x + 5, y + 26.5);
-        g.closePath();
-        g.stroke();
-        g.fill()
- 
-        // Side Wall
-        g.beginPath()
-        g.fillStyle = "#BBBBBB"
-        g.moveTo(x + 30, y + 30);
-        g.lineTo(x + 30, y + 50);
-        g.lineTo(x + 50, y + 40);
-        g.lineTo(x + 50, y + 20);
-        g.closePath();
-        g.stroke();
-        g.fill()
-
+            let n1 = Math.floor(Math.random() * 5 + 1);
+            let n2 = Math.floor(Math.random() * 5 + 1);
+            let n3 = Math.floor(Math.random() * 5 + 1);
+            let n4 = Math.floor(Math.random() * 5 + 1);
+            let n5 = Math.floor(Math.random() * 5 + 1);
+            let n6 = Math.floor(Math.random() * 5 + 1);
+            document.body.style.background = "#"+n1+n2+n3+n4+n5+n6;
+          }
+        
     }
+
 }
 
 let app = new App();
