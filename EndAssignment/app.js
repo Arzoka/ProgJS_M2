@@ -11,6 +11,12 @@ class App
         canvas.height = screen.height;
         canvas.width = screen.width;
 
+        this.DrawText = function(x,y,hex,g) {
+            g.font = "80px sans serif";
+            g.strokeStyle = hex;
+            g.strokeText("fijne feestdagen", x, y);
+        }
+
         this.DrawCircle = function(x,y,hex,pix,g) {
             g.beginPath();
             g.fillStyle = hex;
@@ -172,7 +178,11 @@ class App
         this.DrawSnowMan(20,300,g);
         this.DrawSnowMan(500,333,g);
 
+        //ChristmasTree
         this.DrawTree2(750,300,g);
+
+        //Text
+          this.DrawText(500, 650,"#000",g)
     }
 }
 
